@@ -10,4 +10,9 @@ public class PersonalInfo {
     private int age;
     private String description;
     private String cvURL;
+
+    private int yearsOfExperience;
+    private int happyClient;
+    private int projectDone;
+    private int numberOfAwards;
 }

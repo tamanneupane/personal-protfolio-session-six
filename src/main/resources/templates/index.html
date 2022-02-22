@@ -144,27 +144,27 @@
         </div>
         <div class="brands-grid separator-border mt-5">
           <div class="row">
-            <div class="col-6 col-md-3">
+            <div class="col-6 col-md-3" th:unless="${personalInfo.yearsOfExperience} == 0">
               <div class="featured-box text-center">
-                <h4 class="text-12 text-muted mb-0"><span class="counter" data-from="0" data-to="10">10</span>+</h4>
+                <h4 class="text-12 text-muted mb-0"><span class="counter" data-from="0"  th:attr="data-to=${personalInfo.yearsOfExperience}" ></span>+</h4>
                 <p class="mb-0">Years Experiance</p>
               </div>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-6 col-md-3" th:unless="${personalInfo.happyClient} == 0">
               <div class="featured-box text-center">
-                <h4 class="text-12 text-muted mb-0"><span class="counter" data-from="0" data-to="250">250</span>+</h4>
+                <h4 class="text-12 text-muted mb-0"><span class="counter" data-from="0" th:attr="data-to=${personalInfo.happyClient}"></span>+</h4>
                 <p class="mb-0">Happy Clients</p>
               </div>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-6 col-md-3" th:unless="${personalInfo.projectDone} == 0">
               <div class="featured-box text-center">
-                <h4 class="text-12 text-muted mb-0"><span class="counter" data-from="0" data-to="650">650</span>+</h4>
+                <h4 class="text-12 text-muted mb-0"><span class="counter" data-from="0" th:attr="data-to=${personalInfo.projectDone}"></span>+</h4>
                 <p class="mb-0">Projects Done</p>
               </div>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-6 col-md-3" th:unless="${personalInfo.numberOfAwards} == 0">
               <div class="featured-box text-center">
-                <h4 class="text-12 text-muted mb-0"><span class="counter" data-from="0" data-to="38">20</span></h4>
+                <h4 class="text-12 text-muted mb-0"><span class="counter" data-from="0" th:attr="data-to=${personalInfo.numberOfAwards}"></span></h4>
                 <p class="mb-0">Get Awards</p>
               </div>
             </div>
@@ -176,7 +176,7 @@
     
     <!-- Services
     ============================================= -->
-    <section id="services" class="section bg-light">
+    <section id="services" class="section bg-light" th:unless="${services.empty}">
       <div class="container px-lg-5"> 
         <!-- Heading -->
         <div class="position-relative d-flex text-center mb-5">
@@ -188,46 +188,11 @@
         <div class="row">
           <div class="col-lg-11 mx-auto">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6" th:each="service : ${services}">
                 <div class="featured-box style-3 mb-5">
-                  <div class="featured-box-icon text-primary bg-white shadow-sm rounded"> <i class="fas fa-palette"></i> </div>
-                  <h3>Graphic Design</h3>
-                  <p class="mb-0">Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="featured-box style-3 mb-5">
-                  <div class="featured-box-icon text-primary bg-white shadow-sm rounded"> <i class="fas fa-desktop"></i></div>
-                  <h3>Web Design</h3>
-                  <p class="mb-0">Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="featured-box style-3 mb-5">
-                  <div class="featured-box-icon text-primary bg-white shadow-sm rounded"> <i class="fas fa-pencil-ruler"></i> </div>
-                  <h3>UI/UX Design</h3>
-                  <p class="mb-0">Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="featured-box style-3 mb-5">
-                  <div class="featured-box-icon text-primary bg-white shadow-sm rounded"> <i class="fas fa-paint-brush"></i> </div>
-                  <h3>App Design &amp; Develop</h3>
-                  <p class="mb-0">Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="featured-box style-3 mb-5 mb-md-0">
-                  <div class="featured-box-icon text-primary bg-white shadow-sm rounded"> <i class="fas fa-chart-area"></i> </div>
-                  <h3>Business Analysis</h3>
-                  <p class="mb-0">Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="featured-box style-3 mb-0">
-                  <div class="featured-box-icon text-primary bg-white shadow-sm rounded"> <i class="fas fa-bullhorn"></i> </div>
-                  <h3>SEO Marketing</h3>
-                  <p class="mb-0">Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.</p>
+                  <div class="featured-box-icon text-primary bg-white shadow-sm rounded"> <i th:class="${service.icon}"></i> </div>
+                  <h3 th:text="${service.title}"></h3>
+                  <p class="mb-0" th:text="${service.shortDescription}"></p>
                 </div>
               </div>
             </div>
