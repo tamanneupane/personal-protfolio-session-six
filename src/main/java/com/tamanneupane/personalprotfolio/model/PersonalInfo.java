@@ -2,6 +2,9 @@ package com.tamanneupane.personalprotfolio.model;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 public class PersonalInfo {
     private String fullName;
@@ -15,4 +18,6 @@ public class PersonalInfo {
     private int happyClient;
     private int projectDone;
     private int numberOfAwards;
+
+    private List<String> names = new ArrayList<>();
 }
