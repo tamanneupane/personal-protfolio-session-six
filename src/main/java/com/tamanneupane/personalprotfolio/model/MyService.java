@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 
@@ -20,6 +22,7 @@ public class MyService {
     @Getter
     @Id
     @Column(name = "title")
+    @NotEmpty(message = "Please enter the title")
     private String title;
 
     @Getter

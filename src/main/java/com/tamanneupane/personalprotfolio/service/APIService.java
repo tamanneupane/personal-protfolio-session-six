@@ -1,5 +1,6 @@
 package com.tamanneupane.personalprotfolio.service;
 
+import com.tamanneupane.personalprotfolio.exceptions.ServiceNotFoundException;
 import com.tamanneupane.personalprotfolio.model.MyService;
 import com.tamanneupane.personalprotfolio.repository.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,11 @@ public class APIService {
     }
 
 
-    public void createService(MyService myService) {
-        serviceRepository.save(myService);
+    public MyService createService(MyService myService) {
+        return serviceRepository.save(myService);
     }
 
-    public void updateService(String title, MyService myService) {
+    public MyService updateService(String title, MyService myService) {
         Optional<MyService> optionalService = serviceRepository.findById(title);
 
         if(optionalService.isPresent()){
@@ -38,10 +39,10 @@ public class APIService {
             if(myService.getIcon() != null)
                 service.setIcon(myService.getIcon());
 
-            serviceRepository.save(service);
+            return serviceRepository.save(service);
 
         }else{
-            throw new RuntimeException("Service not found");
+            throw new ServiceNotFoundException(404,"Service not found");
         }
     }
 
